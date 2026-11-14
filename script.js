@@ -3,13 +3,13 @@ document.getElementById('calc-btn').addEventListener('click', function() {
   var resultEl = document.getElementById('result');
   
   if (!input) {
-    resultEl.textContent = 'Р’РІРµРґРёС‚Рµ РІС‹СЂР°Р¶РµРЅРёРµ';
+    resultEl.textContent = 'Введите выражение';
     return;
   }
   
   var parts = input.split(/\s+/);
   if (parts.length !== 3) {
-    resultEl.textContent = 'РћС€РёР±РєР°: С„РѕСЂРјР°С‚ вЂ” С‡РёСЃР»Рѕ РѕРїРµСЂР°С‚РѕСЂ С‡РёСЃР»Рѕ';
+    resultEl.textContent = 'Ошибка: формат — число оператор число';
     return;
   }
   
@@ -18,7 +18,7 @@ document.getElementById('calc-btn').addEventListener('click', function() {
   var b = parseFloat(parts[2]);
   
   if (isNaN(a) || isNaN(b)) {
-    resultEl.textContent = 'РћС€РёР±РєР°: РЅРµРІРµСЂРЅС‹Рµ С‡РёСЃР»Р°';
+    resultEl.textContent = 'Ошибка: неверные числа';
     return;
   }
   
@@ -29,15 +29,15 @@ document.getElementById('calc-btn').addEventListener('click', function() {
     case '*': res = a * b; break;
     case '/':
       if (b === 0) {
-        resultEl.textContent = 'РћС€РёР±РєР°: РґРµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ';
+        resultEl.textContent = 'Ошибка: деление на ноль';
         return;
       }
       res = a / b;
       break;
     default:
-      resultEl.textContent = 'РћС€РёР±РєР°: РЅРµРёР·РІРµСЃС‚РЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ';
+      resultEl.textContent = 'Ошибка: неизвестный оператор';
       return;
   }
   
-  resultEl.textContent = 'Р РµР·СѓР»СЊС‚Р°С‚: ' + res;
+  resultEl.textContent = 'Результат: ' + res;
 });
